@@ -61,3 +61,19 @@ This project involves building an interactive country data table component that 
 
 4. **Filtering & Search**:  
    Filters implemented as dropdowns, with handlers to update the table data based on the selected filters. The search bar will filter by country code (exact match) or country name.
+
+### Technical Stack:
+
+- React - The core library for building user interfaces.
+- Apollo Client - A library for fetching data from a GraphQL API.
+- Tailwind CSS - A utility-first CSS framework for styling.
+- Recoil - A state management library for React applications.
+
+- React Router DOM - A library for handling routing in React applications.
+- GraphQL - A query language for APIs, used in conjunction with Apollo Client for data fetching.
+- Lucide React - A library of open-source icons for React.
+- React Feather - A collection of customizable icons for React applications.
+- tailwindcss/vite - A Vite plugin for integrating Tailwind CSS.
+- Vite - A fast and modern build tool for React applications.
+
+I just wanted to express my gratitude for this experience. I've learned so much, particularly with Recoil, and it has been incredibly valuable in expanding my knowledge. Thank you for the opportunity to work on this project!
