@@ -1,50 +1,63 @@
-# React + TypeScript + Vite
+### Interactive Country Data Table Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project involves building an interactive country data table component that fetches country information from a GraphQL API and displays it. the app also has various features like filtering, pagination, and search functionality.
 
-Currently, two official plugins are available:
+### Features and Requirements:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Data Display**:
 
-## Expanding the ESLint configuration
+   - Fetch and display country data from the provided GraphQL endpoint.
+   - Columns to display:
+     - **Country Name**
+     - **Country Code**
+     - **Continent**
+     - **Currency**
+   - Show the total number of entries in the dataset.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Pagination**:
 
-- Configure the top-level `parserOptions` property like this:
+   - Implement table pagination with:
+     - Options for entries per page (10, 20, 50, 100).
+     - Display the current page number and total pages.
+     - Add previous/next navigation buttons.
+     - Update the URL to reflect the current page state for better user experience.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+3. **Filtering & Search**:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   - Add a **continent filter** dropdown to filter countries by continent.
+   - Add a **currency filter** dropdown to filter countries by currency.
+   - Create a **search** feature:
+     - Exact match search for **country code**.
+     - Fuzzy search for **country name** (partial matching).
+   - Filters should be combinable, meaning users can apply multiple filters at the same time.
+   - Update the results in real-time as filters change.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+4. **Technical Requirements**:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   - **TypeScript** for all components and utilities to ensure type safety and easy maintainability.
+   - **Apollo GraphQL Client** to fetch data from the GraphQL API (`https://countries.trevorblades.com/graphql`).
+   - **Tailwind CSS** for styling, ensuring a responsive layout.
+   - **Recoil (optional)** for managing global state across the components.
+   - Implement proper **error handling** for API calls, including loading and error states.
+   - Ensure the design is **responsive** across all screen sizes.
+
+5. **Additional Notes**:
+   - **Debounce** should be implemented for the search input to reduce the number of requests while typing.
+   - Use a **loading state** to show when data is being fetched asynchronously.
+   - **Pagination state** should update the URL so the page can be bookmarked or shared with the same data view.
+
+---
+
+### Code Explanation:
+
+1. **Apollo GraphQL Client**:  
+   I used Apollo Client to fetch data from the GraphQL API. We’ll define a query to fetch the required fields (country name, code, continent, and currency) and use `useQuery` to fetch the data inside our component.
+
+2. **Table Component**:  
+   The table displays country data dynamically.
+
+3. **Pagination**:  
+   Pagination controls added at the bottom of the table, handle's page state and the number of items per page using React state, and update the displayed data accordingly.
+
+4. **Filtering & Search**:  
+   Filters implemented as dropdowns, with handlers to update the table data based on the selected filters. The search bar will filter by country code (exact match) or country name.
