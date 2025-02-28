@@ -226,6 +226,13 @@ function App() {
           </div>
         </div>
       </div>
+      {/* Display Total Number of Entries */}
+      <div className="mb-4">
+        <p className="text-sm text-gray-600">
+          Total Entries:{" "}
+          <span className="font-bold">{filteredBySearch.length}</span>
+        </p>
+      </div>
       <CountryTable
         data={filteredBySearch.slice(
           (currentPage - 1) * entriesPerPage,
